@@ -5,50 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
     <title>Pig Latin Translator</title>
 </head>
 <body>
-    <h1>Pig Latin Translator</h1>
     <div class="wrapper">
+        <header>
+            <h1>Pig Latin Translator</h1>
+        </header>
+        <div class="output">        <!--This is where the innerHTML is being sent-->
+            <label for="output">Pig Latin!</label>
+            <p id="answer"></p>
+        </div>
+        
+
         <form id="pigForm" class="form" onsubmit="return false;" method="GET">     <!-- make form ID, return false to prevent reload-->
-            <label for="english">English</label>
-            <input type="text" id="english-input">                                  <!-- This is where the text is coming from-->
-            <input type="submit" onclick="validate()">                              <!-- This is running the function to take the text and then call the translator function-->
+            <label for="input">Boring old English</label>
+            <input class="input" type="text" placeholder="Type your word or phrase here" id="english-input">                                  <!-- This is where the text is coming from-->
+            <button class="clear" type="reset"><i class="fas fa-times"></i></button>                            <!-- This is running the function to take the text and then call the translator function-->
+            <button class="submit" type="submit" onclick="validate()"><i class="fas fa-chevron-right"></i></button> 
 
         </form>
-        <p id="answer"></p>                                                         <!--This is where the innerHTML is being sent-->
+                                                                 
     </div>
 
-    <script>
-   
-        validate = function() {                                                     
-            let name = document.getElementById("english-input").value;              // taking input & assign to variable 
-            let translation = translatePigLatin(name);                              // assign trans func to variable
-
-            document.getElementById("answer").innerHTML = translation;              // call function and assign result to id
-
-            
-        }
-
-// translator function
-    function translatePigLatin(str) {
-	const reFindVowel = /\b[aeiouAEIOU]/g;
-	const reFindConsonant = /\b[^aeiouAEIOU]+/g;
-	 return reFindVowel.test(str) ? append(str) : remove(str); //needs to be return
-
-	function append(str) {
-		return str.concat("way");
-	}
-
-	function remove(str) {
-		let start = str.match(reFindConsonant);
-		return str.replace(reFindConsonant, "").concat(start + "ay");
-        }
-    }
-
-// translatePigLatin("eight");
-    
-    </script>
+    <script src="scripts.js"></script>
     
 </body>
 </html>

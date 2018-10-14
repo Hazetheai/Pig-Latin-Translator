@@ -1,19 +1,117 @@
+/* html {
+    box-sizing: border-box;
+} */
+/* 
+*, *:before, *:after {
+    box-sizing: inherit;
+} */
+
 body {
+    /* border: solid red 1px; */
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+background-image: linear-gradient(18deg,  #FCD7DE, #FFF);
 
 }
 
 .wrapper {
+max-width: 1000px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+  }
 
-}
+    header {
+    font-family: 'Mali', cursive;
+    text-align: center;
+    }
 
-form {
+    .output p {
+    font-family: 'Mali', cursive;
+    text-indent: 1rem;
+    color: #F23258;
+    width: 100%;
+    margin: 0;
+    line-height: 50px;
+    height: 180px;
+    background: white;
+    border: solid 1px black;
+    border-bottom-width: 3px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+    outline: none;
+    }
 
-}
+    .output label {
+    font-family: 'Mali', cursive;
 
-input {
+    }
 
-}
+    form {
+    margin: 0;
+    padding: 0;
 
-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-items: center;
+    }
+    form label {
+        align-self: flex-end;
+        margin-right: auto; 
+    }
+
     
-}
+
+
+    input {
+        font-family: inherit;
+        font-size: inherit;
+        text-indent: 1rem;
+
+        width: 100%;
+        /* padding: 0 20px; */
+        line-height: 50px;
+        height: 180px;
+        background: white;
+        border: solid 1px black;
+        border-bottom-width: 3px;
+        border-radius: 5px;
+        -webkit-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+        outline: none;
+        order: 3;
+
+    }
+
+    .clear {
+        /* padding: 1rem; */
+        width: 50px;
+        height: 50px;
+        background: #F3CFEB;
+        border-radius: 100px;
+        order: 1;
+        outline: none;
+        align-self: center;
+        margin-right: auto; 
+
+    }
+    .fa-times {
+        font-size: 2rem;
+    }
+
+    .submit {
+        order: 2;  
+        width: 76px;
+        height: 76px;
+        background:#F23258;
+        border-radius: 100px;
+        order: 1;
+        outline: none;
+    }
+
+    .fa-chevron-right {
+        padding-left: .5rem;
+        font-size: 3rem;
+    }
