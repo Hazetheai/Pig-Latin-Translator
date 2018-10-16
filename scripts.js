@@ -13,6 +13,7 @@ validate = function() {
 
 	document.getElementById("answer").innerHTML = translation;              // call function and assign result to id
 	document.getElementById("pigForm").reset();
+	window.scrollTo(0,0);
 
 	
 }
