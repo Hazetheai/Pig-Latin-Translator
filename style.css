@@ -1,16 +1,10 @@
-/* html {
-    box-sizing: border-box;
-} */
-/* 
-*, *:before, *:after {
-    box-sizing: inherit;
-} */
 
-body {
-    /* border: solid red 1px; */
+
+body, html{
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 background-image: linear-gradient(18deg,  #FCD7DE, #FFF);
-
+background-size: 100vh;
+min-height: 100vh;
 }
 
 .wrapper {
@@ -23,6 +17,7 @@ flex-direction: column;
     header {
     font-family: 'Mali', cursive;
     text-align: center;
+    font-size: 2.5vh;
     }
 
     .output p {
@@ -32,7 +27,7 @@ flex-direction: column;
     width: 100%;
     margin: 0;
     line-height: 50px;
-    height: 180px;
+    height: 17vh;
     background: white;
     border: solid 1px black;
     border-bottom-width: 3px;
@@ -73,7 +68,7 @@ flex-direction: column;
         width: 100%;
         /* padding: 0 20px; */
         line-height: 50px;
-        height: 180px;
+        height: 17vh;
         background: white;
         border: solid 1px black;
         border-bottom-width: 3px;

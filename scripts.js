@@ -6,39 +6,36 @@ function clearOutput() {
 
 clear.addEventListener('click', clearOutput);
 
+	const myForm = document.forms['pigForm'];
+	const output = document.querySelector('#answer');
 
-validate = function() {                                                     
-	let name = document.getElementById("english-input").value;              // taking input & assign to variable 
-	let translation = translatePigLatin(name);                              // assign trans func to variable
+	myForm.addEventListener('submit', function(e) {
+		e.preventDefault();
 
-	document.getElementById("answer").innerHTML = translation;              // call function and assign result to id
-	document.getElementById("pigForm").reset();
-	window.scrollTo(0,0);
-
-	
-}
+		const name = myForm.querySelector('input[type="text"]').value;
+		if (name == "") return false;
+		
+		const translation = translatePigLatin(name);
+		output.textContent = translation;
+		
+		document.forms["pigForm"].reset();
+		window.scrollTo(0,0);
+	});
 
 // translator function
 function translatePigLatin(str) {
-	let arr = str.split(" ").map(el => {
-
-		const reFindVowel = /\b[aeiouAEIOU]/g;
+	const reFindVowel = 	/\b[aeiouAEIOU]/g;
 	const reFindConsonant = /\b[^aeiouAEIOU]+/g;
-	return reFindVowel.test(el) ? append(el) : remove(el);
 
-	function append(el) {
-		return el.concat("way").toLowerCase();
-	}
+	const append = (el => el.concat("way")
+	.toLowerCase());
 
-	function remove(el) {
-		let start = el.match(reFindConsonant);
-		return el.replace(reFindConsonant, "").concat(start + "ay").toLowerCase();
-	}
+	const remove = (el => el.replace(reFindConsonant, "")
+	.concat(el.match(reFindConsonant) + "ay")
+	.toLowerCase());
 
-
-	});
-
-	
+	const arr = str.split(" ").map(el => reFindVowel.test(el) ? append(el) 
+															  : remove(el));
 
 	let newStr = arr.join(" ");
 	let cap = newStr.charAt(0).toUpperCase();
