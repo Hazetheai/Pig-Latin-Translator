@@ -1,6 +1,7 @@
 let clear = document.querySelector('.clear');
 const myForm = document.forms['pigForm'];
 const output = document.querySelector('#answer');
+const submitButton = document.querySelector('.submit');
 
 // Submit function
 function submit(e) {
@@ -17,6 +18,8 @@ function submit(e) {
 };
 
 myForm.addEventListener('submit', submit);
+submitButton.addEventListener('click', submit);
+
 
 //Clear function
 function clearOutput() {
