@@ -9,10 +9,11 @@ function submit(e) {
 	if (name == "") return false;	
 	const translation = translatePigLatin(name);
 	output.textContent = translation;	
-	// document.forms["pigForm"].reset();
+	document.forms["pigForm"].reset();
 	window.scrollTo(0,0);
 	getMsg();
-	speak();
+	toggle();
+	console.log('submit')
 };
 
 myForm.addEventListener('submit', submit);
@@ -20,15 +21,13 @@ myForm.addEventListener('submit', submit);
 //Clear function
 function clearOutput() {
 	document.getElementById("answer").innerHTML = "";
+	console.log('clearOutput')
+
 }
 
 clear.addEventListener('click', clearOutput);
 
 //Speak function
-
-function speak() {
-	toggle();
-}
 
 	
 // Speech to text
@@ -42,23 +41,27 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 	// p.classList.add('speech');
     // const words = document.querySelector('.input');
 	// words.append(p);
-	
+	var transcript;
 	recognition.addEventListener('result', e => {
-        const transcript = Array.from(e.results)
+         transcript = Array.from(e.results)
             .map(result => result[0])
             .map(result => result.transcript)
-            .join('')
+			.join('')
+			
             // p.textContent = transcript;
             if(e.results[0].isFinal) {
                 myForm.querySelector('input[type="text"]').value = transcript;
-            }
+			}
 			console.log(transcript);
+			
+
     });
 	recognition.addEventListener('end', recognition.start);
 	recognition.addEventListener('end', submit);
 	
     
 	recognition.start();
+	console.log('recog');
 
 
 	// Text to Speech
@@ -74,13 +77,15 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
    
 	 //the text we are speaking
 	 function getMsg() {
-		msg.text = document.querySelector('#answer').textContent;
+		
+		if(/f\*\*\*|c\*\*\*|s\*\*\*|see\syou\snext\stuesday|c\su\sn\st/ig.test(transcript)) {
+			msg.text = "Mind your language you cheeky pup";
+			} else msg.text = document.querySelector('#answer').textContent;
+		
 	 	console.log(msg.text);
-	 }
+	 }///
 
 	 
-   
-   
 	 //put voices from Chromes APi into list
 	 function populateVoices() {
 		 voices = this.getVoices();
@@ -97,14 +102,14 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 		 console.log(msg);
    
 	}
-	 //restart phrase if interrupted
+	// play
 	  function toggle(startOver = true) {
 	   speechSynthesis.cancel();
 	   if (startOver) {
 		 speechSynthesis.speak(msg);
 	   }
 	 }
-	 // choose options
+	 //restart phrase if interrupted
 	 function setOption() {
 		 console.log(this.name, this.value);
 		 msg[this.name] = this.value;
@@ -116,8 +121,8 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
    
    options.forEach(option => option.addEventListener('change', setOption));
    
-   speakButton.addEventListener('click', toggle);
-   stopButton.addEventListener('click', () => toggle(false));
+//    speakButton.addEventListener('click', speak);
+//    stopButton.addEventListener('click', () => toggle(false));
 	
 
 
