@@ -2,9 +2,10 @@
 
 body, html{
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-background-image: linear-gradient(18deg,  #FCD7DE, #FFF);
-background-size: 100vh;
-min-height: 100vh;
+background-image: linear-gradient(
+        to right bottom,
+        #F3CFEBcc,
+        rgba(234, 230, 236, 0.8));
 }
 
 .wrapper {
@@ -116,4 +117,19 @@ flex-direction: column;
     .fa-chevron-right {
         padding-left: .5rem;
         font-size: 3rem;
+    }
+
+    .voiceinator {
+        /* display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        max-width: 60vw;
+        margin: auto;
+        padding-top: 10vh;
+    }
+
+    #voices {
+        display: block;
+        margin-bottom: 7vh;
     }
