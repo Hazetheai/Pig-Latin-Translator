@@ -3,6 +3,9 @@ const myForm = document.forms['pigForm'];
 const output = document.querySelector('#answer');
 const submitButton = document.querySelector('.submit');
 
+//Added while speech synthesis is being re-worked.
+let transcript = name;
+
 // Submit function
 function submit(e) {
 	e.preventDefault();
@@ -33,38 +36,43 @@ clear.addEventListener('click', clearOutput);
 //Speak function
 
 	
-// Speech to text
+// Speech to text --> WILL NEED TO MAKE SEPERATE BRANCH FOR THIS FEATURE BEFORE RE-IMPLEMENTING
 
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+// window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    const recognition = new SpeechRecognition();
-	recognition.interimResults = true;
+//     const recognition = new SpeechRecognition();
+// 	recognition.interimResults = true;
 	
-	// let p = document.createElement('p');
-	// p.classList.add('speech');
-    // const words = document.querySelector('.input');
-	// words.append(p);
-	var transcript;
-	recognition.addEventListener('result', e => {
-         transcript = Array.from(e.results)
-            .map(result => result[0])
-            .map(result => result.transcript)
-			.join('')
+// 	////////////
+// 	// let p = document.createElement('p');
+// 	// p.classList.add('speech');
+//     // const words = document.querySelector('.input');
+// 	// words.append(p);
+// 	////////////
+
+// 	var transcript;
+// 	recognition.addEventListener('result', e => {
+//          transcript = Array.from(e.results)
+//             .map(result => result[0])
+//             .map(result => result.transcript)
+// 			.join('')
 			
-            // p.textContent = transcript;
-            if(e.results[0].isFinal) {
-                myForm.querySelector('input[type="text"]').value = transcript;
-			}
-			console.log(transcript);
+// 			//////////
+// 			// p.textContent = transcript;
+// 			//////////
+//             if(e.results[0].isFinal) {
+//                 myForm.querySelector('input[type="text"]').value = transcript;
+// 			}
+// 			console.log(transcript);
 			
 
-    });
-	recognition.addEventListener('end', recognition.start);
-	recognition.addEventListener('end', submit);
+//     });
+// 	recognition.addEventListener('end', recognition.start);
+// 	recognition.addEventListener('end', submit);
 	
     
-	recognition.start();
-	console.log('recog');
+// 	recognition.start();
+// 	console.log('recog');
 
 
 	// Text to Speech
@@ -92,7 +100,7 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 	 //put voices from Chromes APi into list
 	 function populateVoices() {
 		 voices = this.getVoices();
-		 voicesDropdown.innerHTML  = voices
+		 voicesDropdown.innerHTML = voices
 		 .filter(voice => voice.lang.includes('en'))
 		   .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
 		   .join('');
